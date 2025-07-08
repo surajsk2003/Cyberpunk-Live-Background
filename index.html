@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cyberpunk Live Background</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            overflow: hidden;
+            background: #000;
+            font-family: 'Courier New', monospace;
+        }
+
+        .container {
+            position: relative;
+            width: 100vw;
+            height: 100vh;
+            background: linear-gradient(45deg, #0a0a0a 0%, #1a0a1a 50%, #0a1a0a 100%);
+        }
+
+        /* Animated Grid Background */
+        .grid-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                linear-gradient(rgba(0, 255, 255, 0.1) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 255, 255, 0.1) 1px, transparent 1px);
+            background-size: 50px 50px;
+            animation: gridMove 20s linear infinite;
+        }
+
+        @keyframes gridMove {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(50px, 50px); }
+        }
+
+        /* Floating Particles */
+        .particle {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: #00ffff;
+            border-radius: 50%;
+            animation: float 8s infinite ease-in-out;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); opacity: 0; }
+            50% { transform: translateY(-100px) rotate(180deg); opacity: 1; }
+        }
+
+        /* Neon Code Rain */
+        .code-rain {
+            position: absolute;
+            top: -100px;
+            color: #00ff00;
+            font-size: 12px;
+            opacity: 0.7;
+            animation: codefall 10s linear infinite;
+        }
+
+        @keyframes codefall {
+            0% { 
+                transform: translateY(-100px); 
+                opacity: 0; 
+            }
+            10% { opacity: 0.7; }
+            90% { opacity: 0.7; }
+            100% { 
+                transform: translateY(100vh); 
+                opacity: 0; 
+            }
+        }
+
+        /* Glowing Orbs */
+        .orb {
+            position: absolute;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(255, 0, 255, 0.8) 0%, transparent 70%);
+            animation: orbit 15s linear infinite;
+        }
+
+        @keyframes orbit {
+            0% { transform: rotate(0deg) translateX(200px) rotate(0deg); }
+            100% { transform: rotate(360deg) translateX(200px) rotate(-360deg); }
+        }
+
+        /* Scan Lines */
+        .scanlines {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                transparent 50%, 
+                rgba(0, 255, 255, 0.03) 50%, 
+                rgba(0, 255, 255, 0.03) 51%, 
+                transparent 51%
+            );
+            background-size: 100% 4px;
+            animation: scan 0.1s linear infinite;
+        }
+
+        @keyframes scan {
+            0% { background-position: 0 0; }
+            100% { background-position: 0 4px; }
+        }
+
+        /* Neon Text */
+        .neon-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 4rem;
+            color: #00ffff;
+            text-shadow: 
+                0 0 5px #00ffff,
+                0 0 10px #00ffff,
+                0 0 15px #00ffff,
+                0 0 20px #00ffff,
+                0 0 35px #00ffff,
+                0 0 40px #00ffff;
+            animation: flicker 2s infinite alternate;
+        }
+
+        @keyframes flicker {
+            0%, 18%, 22%, 25%, 53%, 57%, 100% {
+                text-shadow: 
+                    0 0 5px #00ffff,
+                    0 0 10px #00ffff,
+                    0 0 15px #00ffff,
+                    0 0 20px #00ffff,
+                    0 0 35px #00ffff,
+                    0 0 40px #00ffff;
+            }
+            20%, 24%, 55% { 
+                text-shadow: none; 
+            }
+        }
+
+        /* Geometric Shapes */
+        .shape {
+            position: absolute;
+            border: 2px solid #ff00ff;
+            animation: rotate 20s linear infinite;
+        }
+
+        .shape.triangle {
+            width: 0;
+            height: 0;
+            border-left: 50px solid transparent;
+            border-right: 50px solid transparent;
+            border-bottom: 86px solid #ff00ff;
+            border-top: none;
+        }
+
+        .shape.square {
+            width: 80px;
+            height: 80px;
+            background: transparent;
+        }
+
+        .shape.circle {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: transparent;
+        }
+
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Pulse Effect */
+        .pulse {
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            border: 2px solid #00ffff;
+            border-radius: 50%;
+            animation: pulse 3s infinite;
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(0.8);
+                opacity: 1;
+            }
+            100% {
+                transform: scale(2.5);
+                opacity: 0;
+            }
+        }
+
+        /* Data Stream */
+        .data-stream {
+            position: absolute;
+            width: 2px;
+            height: 100px;
+            background: linear-gradient(to bottom, transparent, #00ff00, transparent);
+            animation: stream 4s linear infinite;
+        }
+
+        @keyframes stream {
+            0% { transform: translateY(-100px); opacity: 0; }
+            50% { opacity: 1; }
+            100% { transform: translateY(calc(100vh + 100px)); opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="grid-bg"></div>
+        <div class="scanlines"></div>
+        <div class="neon-text">CYBERPUNK</div>
+        <div id="particles"></div>
+        <div id="codeRain"></div>
+        <div id="orbs"></div>
+        <div id="shapes"></div>
+        <div id="pulses"></div>
+        <div id="dataStreams"></div>
+    </div>
+
+    <script>
+        // Create floating particles
+        function createParticles() {
+            const container = document.getElementById('particles');
+            for (let i = 0; i < 50; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.left = Math.random() * window.innerWidth + 'px';
+                particle.style.top = Math.random() * window.innerHeight + 'px';
+                particle.style.animationDelay = Math.random() * 8 + 's';
+                particle.style.animationDuration = (Math.random() * 3 + 5) + 's';
+                container.appendChild(particle);
+            }
+        }
+
+        // Create code rain
+        function createCodeRain() {
+            const container = document.getElementById('codeRain');
+            const codeChars = '01アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワヲンabcdefghijklmnopqrstuvwxyz0123456789';
+            
+            for (let i = 0; i < 20; i++) {
+                const codeString = document.createElement('div');
+                codeString.className = 'code-rain';
+                codeString.style.left = Math.random() * window.innerWidth + 'px';
+                codeString.style.animationDelay = Math.random() * 10 + 's';
+                codeString.style.animationDuration = (Math.random() * 5 + 8) + 's';
+                
+                let text = '';
+                for (let j = 0; j < 20; j++) {
+                    text += codeChars[Math.floor(Math.random() * codeChars.length)] + '<br>';
+                }
+                codeString.innerHTML = text;
+                container.appendChild(codeString);
+            }
+        }
+
+        // Create glowing orbs
+        function createOrbs() {
+            const container = document.getElementById('orbs');
+            for (let i = 0; i < 5; i++) {
+                const orb = document.createElement('div');
+                orb.className = 'orb';
+                orb.style.width = (Math.random() * 100 + 50) + 'px';
+                orb.style.height = orb.style.width;
+                orb.style.left = Math.random() * window.innerWidth + 'px';
+                orb.style.top = Math.random() * window.innerHeight + 'px';
+                orb.style.animationDelay = Math.random() * 15 + 's';
+                orb.style.animationDuration = (Math.random() * 10 + 10) + 's';
+                container.appendChild(orb);
+            }
+        }
+
+        // Create geometric shapes
+        function createShapes() {
+            const container = document.getElementById('shapes');
+            const shapeTypes = ['triangle', 'square', 'circle'];
+            
+            for (let i = 0; i < 10; i++) {
+                const shape = document.createElement('div');
+                shape.className = 'shape ' + shapeTypes[Math.floor(Math.random() * shapeTypes.length)];
+                shape.style.left = Math.random() * window.innerWidth + 'px';
+                shape.style.top = Math.random() * window.innerHeight + 'px';
+                shape.style.animationDelay = Math.random() * 20 + 's';
+                shape.style.animationDuration = (Math.random() * 15 + 15) + 's';
+                container.appendChild(shape);
+            }
+        }
+
+        // Create pulse effects
+        function createPulses() {
+            const container = document.getElementById('pulses');
+            for (let i = 0; i < 3; i++) {
+                const pulse = document.createElement('div');
+                pulse.className = 'pulse';
+                pulse.style.left = Math.random() * window.innerWidth + 'px';
+                pulse.style.top = Math.random() * window.innerHeight + 'px';
+                pulse.style.animationDelay = Math.random() * 3 + 's';
+                container.appendChild(pulse);
+            }
+        }
+
+        // Create data streams
+        function createDataStreams() {
+            const container = document.getElementById('dataStreams');
+            for (let i = 0; i < 15; i++) {
+                const stream = document.createElement('div');
+                stream.className = 'data-stream';
+                stream.style.left = Math.random() * window.innerWidth + 'px';
+                stream.style.animationDelay = Math.random() * 4 + 's';
+                stream.style.animationDuration = (Math.random() * 2 + 3) + 's';
+                container.appendChild(stream);
+            }
+        }
+
+        // Mouse interaction
+        document.addEventListener('mousemove', (e) => {
+            const cursor = document.createElement('div');
+            cursor.style.position = 'absolute';
+            cursor.style.left = e.pageX + 'px';
+            cursor.style.top = e.pageY + 'px';
+            cursor.style.width = '4px';
+            cursor.style.height = '4px';
+            cursor.style.background = '#00ffff';
+            cursor.style.borderRadius = '50%';
+            cursor.style.pointerEvents = 'none';
+            cursor.style.zIndex = '9999';
+            cursor.style.boxShadow = '0 0 10px #00ffff';
+            document.body.appendChild(cursor);
+            
+            setTimeout(() => {
+                cursor.remove();
+            }, 500);
+        });
+
+        // Initialize everything
+        createParticles();
+        createCodeRain();
+        createOrbs();
+        createShapes();
+        createPulses();
+        createDataStreams();
+
+        // Refresh particles periodically
+        setInterval(() => {
+            document.getElementById('particles').innerHTML = '';
+            createParticles();
+        }, 30000);
+
+        // Dynamic color changes
+        setInterval(() => {
+            const colors = ['#00ffff', '#ff00ff', '#00ff00', '#ffff00', '#ff0080'];
+            const randomColor = colors[Math.floor(Math.random() * colors.length)];
+            document.querySelector('.neon-text').style.color = randomColor;
+        }, 5000);
+    </script>
+</body>
+</html>
